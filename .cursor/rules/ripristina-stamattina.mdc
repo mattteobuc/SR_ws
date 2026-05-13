@@ -1,0 +1,14 @@
+---
+description: Comando utente "ripristina a stamattina" — reset al tag di checkpoint
+alwaysApply: true
+---
+
+# Ripristino progetto SR_ws
+
+Quando l’utente scrive **"ripristina a stamattina"** (o equivalente chiaro: torna al punto fermo di oggi / checkpoint stamattina):
+
+1. Esegui `git status` e **avvisa** se ci sono modifiche non committate o file non tracciati che verrebbero persi. Non procedere con il reset finché l’utente non conferma (o salva con stash/commit).
+2. Esegui `git reset --hard checkpoint/stamattina-2026-05-13` per riallineare l’albero di lavoro a quel tag.
+3. **Non** usare `git clean -fd` salvo richiesta esplicita dell’utente (può eliminare file nuovi non tracciati).
+
+Il tag `checkpoint/stamattina-2026-05-13` punta al commit `6975fb5` (ripristino storefront + asset esterni).

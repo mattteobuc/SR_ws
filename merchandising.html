@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Merchandising — Sugnu Rausana™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F2E8; --cream:#FAF6EE; --sand:#EDE4CF; --dark:#100C06;
+  --burg:#7A1E2E; --sage:#4A6B58; --navy:#1B2D52; --coral:#D45A3A;
+  --gold:#C8881A; --mid:#887968; --border:#DDD5C2; --off:#F0EBD8;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+/* Testo solo per lettori di schermo (accessibilità) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--dark);
+  font-family:'DM Mono',monospace;font-weight:300;
+  max-width:430px;margin:0 auto;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+
+  /* Hero logo */
+  .hero-logo {
+    display: block;
+    width: 90px;
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 2px 16px rgba(0,0,0,0.6));
+    animation: fadeUp 0.9s ease 0.25s both;
+  }
+
+  /* SIZE GUIDE MODAL */
+  .sg-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(16,12,6,0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .sg-overlay.open { display: flex; align-items: flex-end; }
+  .sg-sheet {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    background: #FAF6EE;
+    max-height: 88vh;
+    overflow-y: auto;
+    border-radius: 16px 16px 0 0;
+    animation: slideUp 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+  .sg-header {
+    position: sticky; top: 0;
+    background: #FAF6EE;
+    padding: 20px 24px 14px;
+    border-bottom: 1px solid #DDD5C2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  .sg-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 0.04em;
+    color: #100C06;
+  }
+  .sg-close {
+    width: 36px; height: 36px;
+    border: 1px solid #DDD5C2;
+    background: transparent;
+    border-radius: 50%;
+    font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: #100C06;
+    font-family: 'DM Mono', monospace;
+    transition: background 0.2s;
+  }
+  .sg-close:hover { background: #100C06; color: #FAF6EE; }
+  .sg-body { padding: 24px; }
+  .sg-section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: #7A1E2E;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sg-section-title::after {
+    content: ''; flex: 1; height: 1px; background: #DDD5C2;
+  }
+  .sg-how {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-style: italic;
+    line-height: 1.55; color: #887968;
+    margin-bottom: 24px;
+  }
+  .sg-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    font-family: 'DM Mono', monospace;
+  }
+  .sg-table th {
+    font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #887968;
+    padding: 8px 10px;
+    border-bottom: 1px solid #DDD5C2;
+    text-align: center;
+    background: #F0EBD8;
+  }
+  .sg-table th:first-child { text-align: left; }
+  .sg-table td {
+    font-size: 11px;
+    padding: 10px 10px;
+    border-bottom: 1px solid #EDE4CF;
+    text-align: center;
+    color: #100C06;
+  }
+  .sg-table td:first-child {
+    font-weight: 500; font-size: 13px;
+    text-align: left; color: #100C06;
+  }
+  .sg-table tr:last-child td { border-bottom: none; }
+  .sg-table tr:nth-child(even) td { background: #F7F2E8; }
+  .sg-acc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-bottom: 24px;
+  }
+  .sg-acc-card {
+    background: #EDE4CF;
+    padding: 18px 16px;
+    border: 1px solid #DDD5C2;
+  }
+  .sg-acc-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 0.04em;
+    color: #100C06; margin-bottom: 6px;
+  }
+  .sg-acc-card p {
+    font-size: 10px; letter-spacing: 0.06em;
+    color: #887968; line-height: 1.5;
+    font-family: 'DM Mono', monospace;
+  }
+  .sg-footer-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; font-style: italic;
+    color: #887968; text-align: center;
+    margin-bottom: 32px; line-height: 1.5;
+  }
+/* TOPBAR */
+.topbar{background:var(--dark);padding:8px 0;overflow:hidden;white-space:nowrap}
+.topbar-inner{
+  display:inline-block;
+  animation:marquee 24s linear infinite;
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(250,246,238,.65);
+}
+@keyframes marquee{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:300;
+  background:var(--bg);border-bottom:1px solid var(--border);
+  height:54px;display:grid;
+  grid-template-columns:80px 1fr 80px;align-items:center;padding:0 16px;
+}
+.h-nav{display:flex;gap:12px;overflow:hidden}
+/* Pagina shop: più link in header, scorrimento orizzontale su mobile */
+body.storefront .h-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+body.storefront .h-nav::-webkit-scrollbar{display:none}
+.h-nav a{
+  font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dark);text-decoration:none;white-space:nowrap;
+  border-bottom:1px solid transparent;padding-bottom:1px;transition:.2s;
+  font-weight:400;opacity:.7;
+}
+.h-nav a:hover,.h-nav a.active{opacity:1;border-bottom-color:var(--dark)}
+.h-logo{display:flex;justify-content:center}
+.h-logo img{height:26px;width:auto;object-fit:contain;filter:invert(1)}
+.h-right{display:flex;justify-content:flex-end}
+.h-cta{
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--burg);text-decoration:none;
+  border-bottom:1px solid var(--burg);padding-bottom:1px;transition:.2s;
+  font-weight:500;
+}
+.h-cta:hover{color:var(--dark);border-bottom-color:var(--dark)}
+
+/* HERO */
+.hero{position:relative;height:92vh;max-height:720px;overflow:hidden;background:var(--dark)}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.75;display:block;animation:heroIn 1.4s ease both}
+@keyframes heroIn{from{opacity:0;transform:scale(1.05)}to{opacity:.75;transform:scale(1)}}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(16,12,6,.72) 0%,transparent 55%)}
+.hero-copy{position:absolute;bottom:0;left:0;right:0;padding:0 28px 52px}
+.hero-eye{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,246,238,.45);margin-bottom:10px;animation:fadeUp .9s ease .4s both}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:86px;line-height:.86;color:var(--cream);animation:fadeUp .9s ease .55s both}
+.hero-h1 em{color:var(--gold);font-style:normal;display:block}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;animation:fadeUp .9s ease .7s both}
+.pill{font-size:8px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border:1px solid rgba(250,246,238,.18);color:rgba(250,246,238,.5)}
+.pill.hot{background:var(--burg);border-color:var(--burg);color:var(--cream)}
+
+/* SECTION ANATOMY */
+.sec-anchor{scroll-margin-top:54px}
+.sec-head{padding:52px 24px 0}
+.sec-eyebrow{display:flex;align-items:center;gap:9px;font-size:9px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:12px}
+.ew-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.sec-h2{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.88;letter-spacing:.01em;margin-bottom:10px}
+.sec-sub{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;line-height:1.55;color:var(--mid);margin-bottom:30px}
+.sec-rule{height:1px;background:var(--border)}
+
+/* PRODUCT CARD */
+.pcard{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;border-bottom:1px solid var(--border)}
+.pcard.visible{opacity:1;transform:translateY(0)}
+
+
+/* SWIPER */
+.sw{position:relative;overflow:hidden;touch-action:pan-y}
+.sw-track{display:flex;transition:transform .42s cubic-bezier(.25,.46,.45,.94);will-change:transform}
+.sw-slide{min-width:100%}
+.sw-slide img{width:100%;height:420px;object-fit:cover;display:block;object-position:center}
+.sw-counter{position:absolute;bottom:14px;right:14px;font-size:9px;letter-spacing:.1em;color:rgba(250,246,238,.75);background:rgba(16,12,6,.3);padding:4px 8px;backdrop-filter:blur(4px)}
+.sw-swatch{position:absolute;top:14px;left:14px;width:11px;height:11px;border-radius:50%;border:1.5px solid rgba(250,246,238,.5)}
+
+/* PRODUCT INFO */
+.p-info{padding:20px 24px 30px}
+.p-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px}
+.p-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;font-style:italic;line-height:1.1;flex:1}
+.p-price{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;flex-shrink:0;margin-left:8px}
+.p-ref{font-size:9px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+.p-swatches{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.p-sw-lbl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-right:2px}
+.swatch{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--border);cursor:pointer;transition:.2s;flex-shrink:0}
+.swatch:hover,.swatch.sel{border-color:var(--dark);transform:scale(1.15)}
+.btn-buy{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;font-size:9px;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;margin-bottom:8px;transition:opacity .2s;font-family:'DM Mono',monospace}
+.btn-buy:hover{opacity:.82}
+.btn-ghost{display:block;width:100%;border:1px solid var(--border);background:transparent;text-align:center;padding:11px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--mid);transition:.2s;font-family:'DM Mono',monospace}
+.btn-ghost:hover{border-color:var(--dark);color:var(--dark)}
+
+/* NUOVI ARRIVI */
+.sec-new{background:var(--sand)}
+.sec-new .sec-h2{color:var(--burg)}
+.sec-new .sec-eyebrow{color:var(--burg)}
+.sec-new .ew-dot{background:var(--burg)}
+.sec-new .sec-rule{background:rgba(122,30,46,.15)}
+.sec-new .pcard{background:var(--sand);border-bottom-color:rgba(122,30,46,.1)}
+.sec-new .p-info{background:#E8DFCA}
+.sec-new .p-price{color:var(--burg)}
+.sec-new .p-ref{color:var(--burg)}
+.sec-new .btn-buy{background:var(--burg);color:var(--cream)}
+.sec-new .sw{background:#DDD4BD}
+.sec-new .sec-rule{border-color:rgba(122,30,46,.15)}
+
+/* GRAFICHE */
+.sec-graf{background:var(--bg)}
+.sec-graf .sec-h2{color:var(--dark)}
+.sec-graf .sec-eyebrow{color:var(--mid)}
+.sec-graf .ew-dot{background:var(--dark)}
+.sec-graf .p-price{color:var(--dark)}
+.sec-graf .p-ref{color:var(--mid)}
+.sec-graf .btn-buy{background:var(--dark);color:var(--cream)}
+
+/* SOLO LOGO */
+.sec-logo{background:var(--dark)}
+.sec-logo .sec-h2{color:var(--cream)}
+.sec-logo .sec-eyebrow{color:var(--gold)}
+.sec-logo .ew-dot{background:var(--gold)}
+.sec-logo .sec-sub{color:rgba(250,246,238,.45)}
+.sec-logo .sec-rule{background:rgba(250,246,238,.07)}
+.sec-logo .pcard{background:var(--dark);border-bottom-color:rgba(250,246,238,.06)}
+.sec-logo .sw{background:#1A1208}
+.sec-logo .p-info{background:#180F07}
+.sec-logo .p-name{color:var(--cream)}
+.sec-logo .p-price{color:var(--gold)}
+.sec-logo .p-ref{color:rgba(250,246,238,.3)}
+.sec-logo .btn-buy{background:var(--cream);color:var(--dark)}
+.sec-logo .btn-ghost{border-color:rgba(250,246,238,.12);color:rgba(250,246,238,.4)}
+.sec-logo .btn-ghost:hover{border-color:rgba(250,246,238,.45);color:rgba(250,246,238,.7)}
+.sec-logo .swatch{border-color:rgba(250,246,238,.2)}
+.sec-logo .swatch:hover,.sec-logo .swatch.sel{border-color:rgba(250,246,238,.8)}
+.sec-logo .p-sw-lbl{color:rgba(250,246,238,.35)}
+
+/* ACCESSORI */
+.sec-acc{background:var(--cream);border-top:1px solid var(--border)}
+.sec-acc .sec-h2{color:var(--dark)}
+.sec-acc .sec-eyebrow{color:var(--mid)}
+.sec-acc .ew-dot{background:var(--mid)}
+.sec-acc .pcard{background:var(--cream);border-bottom-color:var(--border)}
+.sec-acc .sw{background:var(--sand)}
+.sec-acc .p-price{color:var(--dark)}
+.sec-acc .p-ref{color:var(--mid)}
+.sec-acc .btn-buy{background:var(--dark);color:var(--cream)}
+
+/* CS CARD */
+.cs-card{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;border-bottom:1px solid var(--border)}
+.cs-card.visible{opacity:1;transform:translateY(0)}
+.cs-visual{aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden}
+.cs-visual::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 12px,rgba(16,12,6,.04) 12px,rgba(16,12,6,.04) 13px)}
+.cs-icon{font-size:48px;opacity:.2;z-index:1}
+.cs-lbl{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:.04em;color:var(--dark);opacity:.2;z-index:1;text-align:center;padding:0 20px}
+.cs-tag{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--burg);z-index:1;border:1px solid var(--burg);padding:5px 12px}
+
+/* MANIFESTO */
+.manifesto{background:var(--burg);padding:66px 28px 72px;text-align:center;position:relative;overflow:hidden}
+.manifesto::after{content:'™';position:absolute;bottom:-55px;right:-5px;font-family:'Bebas Neue',sans-serif;font-size:260px;color:rgba(250,246,238,.04);pointer-events:none;line-height:1}
+.m-pre{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,246,238,.4);margin-bottom:22px}
+.m-q{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:400;font-style:italic;line-height:1.5;color:var(--cream)}
+.m-q strong{font-style:normal;font-weight:600;text-decoration:underline;text-decoration-color:rgba(200,136,26,.45);text-underline-offset:5px}
+.m-ig{display:inline-block;margin-top:34px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,246,238,.5);text-decoration:none;border-bottom:1px solid rgba(200,136,26,.3);padding-bottom:3px;transition:.2s}
+.m-ig:hover{color:var(--gold);border-color:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:40px 24px 30px}
+.f-logo{display:flex;justify-content:center;margin-bottom:30px}
+.f-logo img{height:24px;opacity:.8}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.f-col-h{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,246,238,.22);margin-bottom:12px}
+.f-col a,.f-col span{display:block;font-size:10px;letter-spacing:.04em;color:rgba(250,246,238,.38);text-decoration:none;margin-bottom:8px;transition:.2s}
+.f-col a:hover{color:rgba(250,246,238,.8)}
+.f-copy{border-top:1px solid rgba(250,246,238,.05);padding-top:18px;text-align:center;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,246,238,.14)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+.sw-nav{display:none}
+
+@media (min-width: 980px){
+  body{
+    max-width:none;
+    margin:0;
+  }
+  .topbar{padding:12px 0}
+  .topbar-inner{font-size:10px;letter-spacing:.28em}
+  header{
+    height:72px;
+    grid-template-columns:1fr auto 1fr;
+    padding:0 clamp(28px,4vw,72px);
+    background:rgba(247,242,232,.88);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+  }
+  .h-nav{gap:22px;overflow:visible}
+  .h-nav a,.h-cta{font-size:10px;letter-spacing:.22em}
+  .h-logo img{height:32px}
+  .hero{
+    height:100vh;
+    min-height:880px;
+    max-height:none;
+  }
+  .hero-copy{
+    max-width:min(820px,58vw);
+    padding:0 clamp(44px,7vw,120px) clamp(72px,9vw,120px);
+  }
+  .hero-logo{
+    width:138px;
+    margin-bottom:28px;
+  }
+  .hero-eye{
+    font-size:11px;
+    letter-spacing:.35em;
+    margin-bottom:18px;
+  }
+  .hero-h1{
+    font-size:clamp(138px,15vw,228px);
+    line-height:.81;
+  }
+  .hero-pills{
+    gap:12px;
+    margin-top:30px;
+    max-width:620px;
+  }
+  .pill{
+    font-size:9px;
+    padding:7px 14px;
+  }
+  .sec-head{
+    width:min(1440px,calc(100vw - 96px));
+    margin:0 auto;
+    padding:96px 0 34px;
+    display:grid;
+    grid-template-columns:minmax(320px,1fr) minmax(340px,.62fr);
+    gap:24px 56px;
+    align-items:end;
+  }
+  .sec-eyebrow{
+    grid-column:1 / -1;
+    margin-bottom:0;
+    font-size:10px;
+    letter-spacing:.32em;
+  }
+  .sec-h2{
+    grid-column:1;
+    font-size:clamp(88px,9vw,132px);
+    line-height:.84;
+    margin-bottom:0;
+  }
+  .sec-sub{
+    grid-column:2;
+    align-self:end;
+    justify-self:end;
+    max-width:28ch;
+    margin-bottom:0;
+    padding-bottom:14px;
+    font-size:24px;
+    line-height:1.35;
+  }
+  .sec-rule{
+    grid-column:1 / -1;
+    margin-top:6px;
+  }
+  .sec-new > .pcard,
+  .sec-graf > .pcard,
+  .sec-logo > .pcard,
+  .sec-acc > .pcard,
+  .sec-acc > .cs-card{
+    width:min(1440px,calc(100vw - 96px));
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr);
+    align-items:stretch;
+  }
+  .pcard > .sw,
+  #card-pruenza > .sw,
+  #card-sfuog > .sw,
+  .color-switcher-cicla,
+  .cs-visual{
+    min-height:clamp(560px,52vw,760px);
+  }
+  .color-switcher-cicla{
+    position:relative;
+    height:100%;
+  }
+  .color-switcher-cicla > .sw{
+    height:100%;
+  }
+  .sw{
+    touch-action:pan-y pinch-zoom;
+    cursor:grab;
+  }
+  .sw.is-dragging{cursor:grabbing}
+  .sw-track,.sw-slide{height:100%}
+  .sw-slide img{
+    height:100%;
+    min-height:clamp(560px,52vw,760px);
+    object-position:center 18%;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+  .sw-counter{
+    right:20px;
+    bottom:20px;
+    font-size:10px;
+    letter-spacing:.16em;
+    padding:6px 10px;
+  }
+  .sw-swatch{
+    top:20px;
+    left:20px;
+    width:13px;
+    height:13px;
+  }
+  .sw-nav{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    pointer-events:none;
+  }
+  .sw-nav-btn{
+    width:50px;
+    height:50px;
+    border-radius:999px;
+    border:1px solid rgba(250,246,238,.24);
+    background:rgba(16,12,6,.18);
+    color:var(--cream);
+    font:inherit;
+    font-size:22px;
+    line-height:1;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    cursor:pointer;
+    pointer-events:auto;
+    opacity:0;
+    transform:translateY(8px);
+    transition:opacity .25s ease,transform .25s ease,background .25s ease,border-color .25s ease;
+  }
+  .sw:hover .sw-nav-btn,
+  .sw:focus-within .sw-nav-btn{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .sw-nav-btn:hover{
+    background:rgba(16,12,6,.34);
+    border-color:rgba(250,246,238,.44);
+  }
+  .sw-nav-btn.is-disabled{
+    opacity:.16 !important;
+    pointer-events:none;
+  }
+  .p-info{
+    min-height:100%;
+    padding:clamp(38px,4vw,64px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .p-row{
+    align-items:baseline;
+    gap:24px;
+    margin-bottom:14px;
+  }
+  .p-name{
+    font-size:clamp(42px,4.3vw,68px);
+    line-height:.95;
+    max-width:11ch;
+  }
+  .p-price{
+    font-size:clamp(38px,4vw,56px);
+    margin-left:0;
+  }
+  .p-ref{
+    font-size:10px;
+    letter-spacing:.24em;
+    margin-bottom:24px;
+  }
+  .p-swatches{
+    gap:12px;
+    margin-bottom:28px;
+    flex-wrap:wrap;
+  }
+  .p-sw-lbl{
+    font-size:10px;
+    letter-spacing:.18em;
+    min-width:72px;
+  }
+  .swatch{
+    width:18px;
+    height:18px;
+  }
+  .btn-buy,.btn-ghost{
+    max-width:320px;
+  }
+  .btn-buy{
+    margin-top:auto;
+    margin-bottom:12px;
+    padding:18px 20px;
+    font-size:10px;
+    letter-spacing:.3em;
+  }
+  .btn-ghost{
+    padding:15px 20px;
+    font-size:10px;
+    letter-spacing:.24em;
+  }
+  .cs-visual{
+    aspect-ratio:auto;
+  }
+  .cs-icon{font-size:58px}
+  .cs-lbl{font-size:48px}
+  .manifesto{
+    padding:120px clamp(44px,9vw,140px) 128px;
+  }
+  .manifesto::after{
+    font-size:min(30vw,430px);
+    bottom:-118px;
+    right:0;
+  }
+  .m-pre{
+    font-size:10px;
+    letter-spacing:.36em;
+  }
+  .m-q{
+    max-width:920px;
+    margin:0 auto;
+    font-size:46px;
+    line-height:1.24;
+  }
+  .m-ig{
+    margin-top:42px;
+    font-size:10px;
+  }
+  .sg-overlay.open{
+    align-items:center;
+    justify-content:center;
+  }
+  .sg-sheet{
+    max-width:min(760px,calc(100vw - 48px));
+    max-height:82vh;
+    border-radius:22px;
+  }
+  footer{
+    padding:72px clamp(44px,8vw,120px) 40px;
+  }
+  .f-logo{
+    margin-bottom:40px;
+  }
+  .f-logo img{
+    height:30px;
+  }
+  .f-grid{
+    width:min(1440px,100%);
+    margin:0 auto 42px;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:28px;
+  }
+  .f-col a,.f-col span{
+    font-size:12px;
+  }
+  .f-copy{
+    width:min(1440px,100%);
+    margin:0 auto;
+    font-size:9px;
+  }
+}
+
+@media (min-width: 1440px){
+  .hero{min-height:960px}
+  .hero-copy{max-width:min(900px,54vw)}
+  .p-name{font-size:72px}
+  .p-price{font-size:58px}
+  .m-q{font-size:52px}
+}
+
+</style>
+</head>
+<body class="storefront">
+
+<!-- TOPBAR -->
+<div class="topbar"><span class="topbar-inner">Nuovi arrivi disponibili &nbsp;·&nbsp; 7 grafiche &nbsp;·&nbsp; Tote bag disponibile &nbsp;·&nbsp; Berretti coming soon &nbsp;·&nbsp; Info via Instagram DM &nbsp;·&nbsp; Spedizione gratuita &nbsp;·&nbsp; Nuovi arrivi disponibili &nbsp;·&nbsp; 7 grafiche &nbsp;·&nbsp; Tote bag disponibile &nbsp;·&nbsp; Berretti coming soon &nbsp;·&nbsp; Info via Instagram DM</span></div>
+
+<!-- HEADER — navigazione sito + ancore sezioni catalogo -->
+<header>
+  <nav class="h-nav" aria-label="Navigazione principale">
+    <a href="index.html">Home</a>
+    <a href="iniziative.html">Iniziative</a>
+    <a href="merchandising.html" class="active" aria-current="page">Merchandising</a>
+    <a href="https://ig.me/m/sugnu_rausana" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+    <a href="#new">Novità</a>
+    <a href="#graf">Grafiche</a>
+    <a href="#logo">Logo</a>
+    <a href="#acc">Acc.</a>
+  </nav>
+  <div class="h-logo"><a href="index.html" aria-label="Sugnu Rausana — Home"><img src="assets/index/img-001.png" alt=""></a></div>
+  <div class="h-right"><a class="h-cta" href="https://ig.me/m/sugnu_rausana" target="_blank" rel="noopener noreferrer">Info in chat</a></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="assets/index/img-002.jpg" alt="Sugnu Rausana">
+  <div class="hero-grad"></div>
+  <div class="hero-copy">
+    <img class="hero-logo" src="assets/index/img-003.png" alt="Sugnu Rausana">
+    <p class="hero-eye">Ragusa · Sicilia · 97100</p>
+    <h1 class="hero-h1">SUGNU<em>RAUSANA<sup style="font-size:0.35em;letter-spacing:0;vertical-align:top;position:relative;top:-0.1em;font-family:'DM Mono',monospace;font-weight:300;">™</sup></em></h1>
+    <div class="hero-pills">
+      <span class="pill hot">Nuovi Arrivi</span>
+      <span class="pill">7 Grafiche</span>
+      <span class="pill">Solo Logo</span>
+      <span class="pill">Accessori</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ NUOVI ARRIVI ═══════════════ -->
+<section class="sec-new sec-anchor" id="new">
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="ew-dot"></span>Nuovi Arrivi</div>
+    <h2 class="sec-h2">ESTATE<br>2026.</h2>
+    <p class="sec-sub">I magliette pa stati.</p>
+    <div class="sec-rule"></div>
+  </div>
+
+  <!-- U TRAMUNTU O PIPER -->
+  <article class="pcard">
+    <div class="sw" id="sw-t">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-004.jpg" alt="U Tramuntu o Piper back"></div>
+        <div class="sw-slide"><img src="assets/index/img-005.jpg" alt="U Tramuntu o Piper uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-006.jpg" alt="U Tramuntu o Piper donna"></div>
+        <div class="sw-slide"><img src="assets/index/img-007.jpg" alt="U Tramuntu o Piper front"></div>
+      </div>
+      <span class="sw-counter">1 / 4</span>
+      <span class="sw-swatch" style="background:#C8B89A"></span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">U Tramuntu<br>o Piper</h3>
+        <span class="p-price">20 €</span>
+      </div>
+      <p class="p-ref">97100 — 0010 · Off White</p>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+
+  <!-- A PRUENZA — 2 colori con tab -->
+  <article class="pcard" id="card-pruenza">
+    <!-- Navy slides -->
+    <div class="sw" id="sw-pruenza-navy" style="display:block">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-008.jpg" alt="A Pruenza navy back"></div>
+        <div class="sw-slide"><img src="assets/index/img-009.jpg" alt="A Pruenza navy uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-010.jpg" alt="A Pruenza navy donna"></div>
+        <div class="sw-slide"><img src="assets/index/img-011.jpg" alt="A Pruenza navy front"></div>
+      </div>
+      <span class="sw-counter">1 / 4</span>
+      <span class="sw-swatch" style="background:#1B2D52"></span>
+    </div>
+    <!-- Off white slides -->
+    <div class="sw" id="sw-pruenza-ow" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-012.jpg" alt="A Pruenza ow back"></div>
+        <div class="sw-slide"><img src="assets/index/img-013.jpg" alt="A Pruenza ow uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-014.jpg" alt="A Pruenza ow donna"></div>
+        <div class="sw-slide"><img src="assets/index/img-015.jpg" alt="A Pruenza ow front"></div>
+      </div>
+      <span class="sw-counter">1 / 4</span>
+      <span class="sw-swatch" style="background:#E8E0CE"></span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">A Pruenza</h3>
+        <span class="p-price">20 €</span>
+      </div>
+      <p class="p-ref" id="ref-pruenza">97100 — 0009 · Blu Navy</p>
+      <div class="p-swatches">
+        <span class="p-sw-lbl">Colore</span>
+        <span class="swatch sel" style="background:#1B2D52" onclick="switchColor('pruenza','navy',this)" title="Blu Navy"></span>
+        <span class="swatch" style="background:#E8E0CE;border-color:#aaa" onclick="switchColor('pruenza','ow',this)" title="Off White"></span>
+      </div>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════ GRAFICHE ═══════════════ -->
+<section class="sec-graf sec-anchor" id="graf">
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="ew-dot"></span>Le Grafiche</div>
+    <h2 class="sec-h2">CINQUE<br>STORIE.</h2>
+    <p class="sec-sub">I magliette pi tuttu l'annu.</p>
+    <div class="sec-rule"></div>
+  </div>
+
+  <!-- A CURSA NA CICLABBILE -->
+  <article class="pcard">
+    <div class="color-switcher-cicla">
+    <!-- Verde -->
+    <div class="sw" id="sw-cicla-green" style="display:block">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-016.jpg" alt="A cursa na ciclabbile verde back"></div>
+        <div class="sw-slide"><img src="assets/index/img-017.jpg" alt="A cursa na ciclabbile verde uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-018.jpg" alt="A cursa na ciclabbile verde donna"></div>
+        <div class="sw-slide"><img src="assets/index/img-019.jpg" alt="A cursa na ciclabbile verde front"></div>
+      </div>
+      <span class="sw-counter">1 / 4</span>
+      <span class="sw-swatch" style="background:#4A6B58"></span>
+    </div>
+    <!-- Navy -->
+    <div class="sw" id="sw-cicla-navy" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-020.jpg" alt="A cursa na ciclabbile navy back"></div>
+        <div class="sw-slide"><img src="assets/index/img-021.jpg" alt="A cursa na ciclabbile navy uomo back"></div>
+        <div class="sw-slide"><img src="assets/index/img-022.jpg" alt="A cursa na ciclabbile navy donna"></div>
+        <div class="sw-slide"><img src="assets/index/img-023.jpg" alt="A cursa na ciclabbile navy uomo front"></div>
+        <div class="sw-slide"><img src="assets/index/img-024.jpg" alt="A cursa na ciclabbile navy front"></div>
+      </div>
+      <span class="sw-counter">1 / 5</span>
+      <span class="sw-swatch" style="background:#1B2D52"></span>
+    </div>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">A cursa na<br>ciclabbile</h3>
+        <span class="p-price">20 €</span>
+      </div>
+      <p class="p-ref" id="ref-cicla">97100 — 0003 · Verde Salvia</p>
+      <div class="p-swatches">
+        <span class="p-sw-lbl">Colore</span>
+        <span class="swatch sel" style="background:#4A6B58" onclick="switchColor('cicla','green',this)" title="Verde Salvia"></span>
+        <span class="swatch" style="background:#1B2D52" onclick="switchColor('cicla','navy',this)" title="Blu Navy"></span>
+      </div>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+
+  <!-- U SFUOGGHIU — 4 colori -->
+  <article class="pcard" id="card-sfuog">
+    <div class="sw" id="sw-sfuog-ow" style="display:block">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-025.jpg" alt="U Sfuogghiu off white back"></div>
+        <div class="sw-slide"><img src="assets/index/img-026.jpg" alt="U Sfuogghiu off white uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-027.jpg" alt="U Sfuogghiu off white front"></div>
+      </div>
+      <span class="sw-counter">1 / 3</span>
+      <span class="sw-swatch" style="background:#E8E0CE"></span>
+    </div>
+    <div class="sw" id="sw-sfuog-navy" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-028.jpg" alt="U Sfuogghiu navy back"></div>
+        <div class="sw-slide"><img src="assets/index/img-029.jpg" alt="U Sfuogghiu navy uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-030.jpg" alt="U Sfuogghiu navy front"></div>
+      </div>
+      <span class="sw-counter">1 / 3</span>
+      <span class="sw-swatch" style="background:#1B2D52"></span>
+    </div>
+    <div class="sw" id="sw-sfuog-burg" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-031.jpg" alt="U Sfuogghiu bordeaux back"></div>
+        <div class="sw-slide"><img src="assets/index/img-032.jpg" alt="U Sfuogghiu bordeaux uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-033.jpg" alt="U Sfuogghiu bordeaux front"></div>
+      </div>
+      <span class="sw-counter">1 / 3</span>
+      <span class="sw-swatch" style="background:#7A1E2E"></span>
+    </div>
+    <div class="sw" id="sw-sfuog-black" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-034.jpg" alt="U Sfuogghiu Nero fronte"></div>
+        <div class="sw-slide"><img src="assets/index/img-035.jpg" alt="U Sfuogghiu Nero retro"></div>
+        <div class="sw-slide"><img src="assets/index/img-036.jpg" alt="U Sfuogghiu Nero indossata"></div>
+        <div class="sw-slide"><img src="assets/index/img-037.jpg" alt="U Sfuogghiu Nero indossata variante"></div>
+      </div>
+      <span class="sw-counter">1 / 4</span>
+      <span class="sw-swatch" style="background:#111111"></span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">U Sfuogghiu</h3>
+        <span class="p-price">20 €</span>
+      </div>
+      <p class="p-ref" id="ref-sfuog">97100 — 0004 · Off White</p>
+      <div class="p-swatches">
+        <span class="p-sw-lbl">Colore</span>
+        <span class="swatch sel" style="background:#E8E0CE;border-color:#aaa" onclick="switchColor('sfuog','ow',this)" title="Off White"></span>
+        <span class="swatch" style="background:#1B2D52" onclick="switchColor('sfuog','navy',this)" title="Blu Navy"></span>
+        <span class="swatch" style="background:#7A1E2E" onclick="switchColor('sfuog','burg',this)" title="Bordeaux"></span>
+        <span class="swatch" style="background:#111111" onclick="switchColor('sfuog','black',this)" title="Nero"></span>
+      </div>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+
+  <!-- A NISCIUTA RO CINEPLEX -->
+  <article class="pcard">
+    <div class="sw" id="sw-cineplex">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-038.jpg" alt="A nisciuta ro cineplex back"></div>
+        <div class="sw-slide"><img src="assets/index/img-039.jpg" alt="A nisciuta ro cineplex uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-040.jpg" alt="A nisciuta ro cineplex donna"></div>
+        <div class="sw-slide"><img src="assets/index/img-041.jpg" alt="A nisciuta ro cineplex front"></div>
+      </div>
+      <span class="sw-counter">1 / 4</span>
+      <span class="sw-swatch" style="background:#111111"></span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">A nisciuta ro<br>cineplex</h3>
+        <span class="p-price">20 €</span>
+      </div>
+      <p class="p-ref">97100 — 0007 · Nero</p>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+
+  <!-- A IADDINA CINA -->
+  <article class="pcard">
+    <div class="sw" id="sw-iaddina">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-042.jpg" alt="A Iaddina Cina back"></div>
+        <div class="sw-slide"><img src="assets/index/img-043.jpg" alt="A Iaddina Cina uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-044.jpg" alt="A Iaddina Cina donna"></div>
+        <div class="sw-slide"><img src="assets/index/img-045.jpg" alt="A Iaddina Cina front"></div>
+      </div>
+      <span class="sw-counter">1 / 4</span>
+      <span class="sw-swatch" style="background:#E8E0CE"></span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">A Iaddina Cina</h3>
+        <span class="p-price">20 €</span>
+      </div>
+      <p class="p-ref">97100 — 0006 · Off White</p>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+
+  <!-- A VIA PAESTUM -->
+  <article class="pcard">
+    <div class="sw" id="sw-paestum">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-046.jpg" alt="A via Paestum back"></div>
+        <div class="sw-slide"><img src="assets/index/img-047.jpg" alt="A via Paestum uomo"></div>
+        <div class="sw-slide"><img src="assets/index/img-048.jpg" alt="A via Paestum donna"></div>
+        <div class="sw-slide"><img src="assets/index/img-049.jpg" alt="A via Paestum front"></div>
+      </div>
+      <span class="sw-counter">1 / 4</span>
+      <span class="sw-swatch" style="background:#111111"></span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">A via Paestum</h3>
+        <span class="p-price">20 €</span>
+      </div>
+      <p class="p-ref">97100 — 0008 · Nero</p>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════ SOLO LOGO ═══════════════ -->
+<section class="sec-logo sec-anchor" id="logo">
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="ew-dot"></span>Linea Solo Logo</div>
+    <h2 class="sec-h2">OWN IT.</h2>
+    <p class="sec-sub">I magliette pi chidi raffinati.</p>
+    <div class="sec-rule"></div>
+  </div>
+
+    <!-- Own It — 5 colori reali -->
+  <article class="pcard">
+    <div class="sw" id="sw-logo-white" style="display:block">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-002.jpg" alt="Own It bianco"></div>
+      
+        <div class="sw-slide"><img src="assets/index/img-050.jpg" alt="Own It bianco donna"></div>
+      </div>
+      <span class="sw-counter">1 / 2</span>
+      <span class="sw-swatch" style="background:#F5F5F5;border-color:rgba(0,0,0,.2)"></span>
+    </div>
+    <div class="sw" id="sw-logo-black" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-051.jpg" alt="Own It nero"></div>
+      
+        <div class="sw-slide"><img src="assets/index/img-052.jpg" alt="Own It nero donna"></div>
+      </div>
+      <span class="sw-counter">1 / 2</span>
+      <span class="sw-swatch" style="background:#111111"></span>
+    </div>
+    <div class="sw" id="sw-logo-navy" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-053.jpg" alt="Own It navy"></div>
+      
+        <div class="sw-slide"><img src="assets/index/img-054.jpg" alt="Own It navy donna"></div>
+      </div>
+      <span class="sw-counter">1 / 2</span>
+      <span class="sw-swatch" style="background:#1B2D52"></span>
+    </div>
+    <div class="sw" id="sw-logo-burg" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-055.jpg" alt="Own It bordeaux"></div>
+      
+        <div class="sw-slide"><img src="assets/index/img-056.jpg" alt="Own It bordeaux donna"></div>
+      </div>
+      <span class="sw-counter">1 / 2</span>
+      <span class="sw-swatch" style="background:#7A1E2E"></span>
+    </div>
+    <div class="sw" id="sw-logo-olive" style="display:none">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-057.jpg" alt="Own It oliva"></div>
+      
+        <div class="sw-slide"><img src="assets/index/img-058.jpg" alt="Own It oliva donna"></div>
+      </div>
+      <span class="sw-counter">1 / 2</span>
+      <span class="sw-swatch" style="background:#4A5E35"></span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">Own It.<br>Logo Tee</h3>
+        <span class="p-price">20 €</span>
+      </div>
+      <p class="p-ref" id="ref-logo">Solo Logo · Bianco</p>
+      <div class="p-swatches">
+        <span class="p-sw-lbl">Colore</span>
+        <span class="swatch sel" style="background:#F5F5F5;border-color:rgba(0,0,0,.25)" onclick="switchColor('logo','white',this)" title="Bianco"></span>
+        <span class="swatch" style="background:#111111" onclick="switchColor('logo','black',this)" title="Nero"></span>
+        <span class="swatch" style="background:#1B2D52" onclick="switchColor('logo','navy',this)" title="Navy"></span>
+        <span class="swatch" style="background:#7A1E2E" onclick="switchColor('logo','burg',this)" title="Bordeaux"></span>
+        <span class="swatch" style="background:#4A5E35" onclick="switchColor('logo','olive',this)" title="Oliva"></span>
+      </div>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════ ACCESSORI ═══════════════ -->
+<section class="sec-acc sec-anchor" id="acc">
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="ew-dot"></span>Accessori</div>
+    <h2 class="sec-h2">PORTA<br>RAGUSA.</h2>
+    <p class="sec-sub">Tote bag disponibile. Berretti in arrivo presto.</p>
+    <div class="sec-rule"></div>
+  </div>
+
+  <!-- TOTE BAG -->
+  <article class="pcard">
+    <div class="sw" id="sw-tote">
+      <div class="sw-track">
+        <div class="sw-slide"><img src="assets/index/img-059.jpg" alt="Tote bag St'annu nun vinniru bone"></div>
+        <div class="sw-slide"><img src="assets/index/img-060.jpg" alt="Tote bag lifestyle"></div>
+        <div class="sw-slide"><img src="assets/index/img-061.jpg" alt="Tote bag spiaggia"></div>
+      </div>
+      <span class="sw-counter">1 / 3</span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name">St'annu nun<br>vinniru bone</h3>
+        <span class="p-price">— €</span>
+      </div>
+      <p class="p-ref">97100 — 0008 · Tote Bag · Off White</p>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat →</a>
+      <a class="btn-ghost" href="#" onclick="event.preventDefault();document.getElementById('sgOverlay').classList.add('open')">Guida alle taglie</a>
+    </div>
+  </article>
+
+  <!-- BERRETTI CS -->
+  <article class="cs-card">
+    <div class="cs-visual" style="background:#E0D8C5">
+      <span class="cs-icon">🧢</span>
+      <div class="cs-lbl">Berretto</div>
+      <span class="cs-tag">Coming soon</span>
+    </div>
+    <div class="p-info">
+      <div class="p-row">
+        <h3 class="p-name" style="color:var(--mid)">Berretto<br>97100</h3>
+        <span class="p-price" style="color:var(--mid)">— €</span>
+      </div>
+      <p class="p-ref" style="color:rgba(16,12,6,.25)">Ricamo da definire</p>
+      <a class="btn-buy" href="https://ig.me/m/sugnu_rausana" target="_blank" style="background:var(--burg);color:var(--cream)">Info in chat →</a>
+    </div>
+  </article>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <p class="m-pre">Ragusa · Sicilia · 97100</p>
+  <p class="m-q">Un brand evocativo. Grafiche realizzate da <strong>ragusani ca scorcia</strong>. Storie di una città, stampate su una maglia.</p>
+  <a class="m-ig" href="https://www.instagram.com/sugnu_rausana" target="_blank">@sugnu_rausana — Seguici su Instagram ↗</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo"><img src="assets/index/img-001.png" alt="Sugnu Rausana"></div>
+  <div class="f-grid">
+    <div class="f-col">
+      <p class="f-col-h">Shop</p>
+      <a href="#new">Nuovi Arrivi</a>
+      <a href="#graf">Le Grafiche</a>
+      <a href="#logo">Solo Logo</a>
+      <a href="#acc">Accessori</a>
+      <a href="https://sugnurausana.framer.website/guida_taglie" target="_blank">Guida taglie</a>
+    </div>
+    <div class="f-col">
+      <p class="f-col-h">Brand</p>
+      <a href="https://www.instagram.com/sugnu_rausana" target="_blank">@sugnu_rausana</a>
+      <a href="https://ig.me/m/sugnu_rausana" target="_blank">Info in chat</a>
+      <span>Ragusa, Sicilia</span>
+      <span>97100</span>
+    </div>
+  </div>
+  <div class="f-copy">© 2026 Sugnu Rausana™ · Tutti i diritti riservati</div>
+</footer>
+
+<script>
+// Scroll reveal
+const all = document.querySelectorAll('.pcard,.cs-card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, {threshold:.06});
+all.forEach(c => io.observe(c));
+
+// Swipers
+const desktopMq = window.matchMedia('(min-width: 980px)');
+const swipers = new Map();
+
+function buildSwiperNav(wrap, go) {
+  const nav = document.createElement('div');
+  nav.className = 'sw-nav';
+  const prev = document.createElement('button');
+  prev.type = 'button';
+  prev.className = 'sw-nav-btn';
+  prev.setAttribute('aria-label', 'Immagine precedente');
+  prev.innerHTML = '&#8249;';
+  const next = document.createElement('button');
+  next.type = 'button';
+  next.className = 'sw-nav-btn';
+  next.setAttribute('aria-label', 'Immagine successiva');
+  next.innerHTML = '&#8250;';
+  prev.addEventListener('click', () => go(-1, true));
+  next.addEventListener('click', () => go(1, true));
+  nav.append(prev, next);
+  wrap.append(nav);
+  return { prev, next };
+}
+
+document.querySelectorAll('.sw').forEach(wrap => {
+  const track = wrap.querySelector('.sw-track');
+  const counter = wrap.querySelector('.sw-counter');
+  if(!track) return;
+  const total = track.children.length;
+  if(total < 2) return;
+
+  let idx = 0;
+  let sx = 0;
+  let pointerStart = 0;
+  let dragging = false;
+  let activePointerId = null;
+
+  function sync() {
+    track.style.transform = `translateX(-${idx * 100}%)`;
+    if(counter) counter.textContent = `${idx + 1} / ${total}`;
+    prev.classList.toggle('is-disabled', idx === 0);
+    next.classList.toggle('is-disabled', idx === total - 1);
+  }
+
+  function step(delta, relative = false) {
+    const target = relative ? idx + delta : delta;
+    idx = Math.max(0, Math.min(total - 1, target));
+    sync();
+  }
+
+  wrap.setAttribute('tabindex', '0');
+  const { prev, next } = buildSwiperNav(wrap, step);
+
+  wrap.addEventListener('touchstart', e => {
+    sx = e.touches[0].clientX;
+  }, { passive:true });
+
+  wrap.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    if(Math.abs(dx) > 36) step(dx < 0 ? 1 : -1, true);
+  });
+
+  wrap.addEventListener('pointerdown', e => {
+    if(!desktopMq.matches || e.pointerType === 'touch' || e.target.closest('.sw-nav-btn')) return;
+    dragging = true;
+    pointerStart = e.clientX;
+    activePointerId = e.pointerId;
+    wrap.classList.add('is-dragging');
+    if(wrap.setPointerCapture) wrap.setPointerCapture(activePointerId);
+  });
+
+  function endPointerDrag(clientX, shouldSlide) {
+    if(!dragging) return;
+    const dx = clientX - pointerStart;
+    dragging = false;
+    wrap.classList.remove('is-dragging');
+    if(
+      activePointerId !== null &&
+      wrap.releasePointerCapture &&
+      wrap.hasPointerCapture &&
+      wrap.hasPointerCapture(activePointerId)
+    ) {
+      wrap.releasePointerCapture(activePointerId);
+    }
+    activePointerId = null;
+    if(shouldSlide && Math.abs(dx) > 48) step(dx < 0 ? 1 : -1, true);
+  }
+
+  wrap.addEventListener('pointerup', e => endPointerDrag(e.clientX, true));
+  wrap.addEventListener('pointercancel', e => endPointerDrag(e.clientX || pointerStart, false));
+
+  wrap.addEventListener('keydown', e => {
+    if(!desktopMq.matches) return;
+    if(e.key === 'ArrowLeft') {
+      e.preventDefault();
+      step(-1, true);
+    }
+    if(e.key === 'ArrowRight') {
+      e.preventDefault();
+      step(1, true);
+    }
+  });
+
+  swipers.set(wrap, {
+    reset() {
+      idx = 0;
+      sync();
+    }
+  });
+
+  sync();
+});
+
+// Color switcher
+const colorLabels = {
+  pruenza: { navy:'Blu Navy', ow:'Off White' },
+  sfuog:   { ow:'Off White', navy:'Blu Navy', burg:'Bordeaux', black:'Nero' },
+  cicla:   { green:'Verde Salvia', navy:'Blu Navy' },
+    logo:    { white:'Bianco', black:'Nero', navy:'Blu Navy', burg:'Bordeaux', olive:'Oliva' },
+};
+const colorRefs = {
+  pruenza: { navy:'97100 — 0009 · Blu Navy', ow:'97100 — 0009 · Off White' },
+  sfuog:   { ow:'97100 — 0004 · Off White', navy:'97100 — 0004 · Blu Navy', burg:'97100 — 0004 · Bordeaux', black:'97100 — 0004 · Nero' },
+  cicla:   { green:'97100 — 0003 · Verde Salvia', navy:'97100 — 0003 · Blu Navy' },
+    logo:    { white:'Solo Logo · Bianco', black:'Solo Logo · Nero', navy:'Solo Logo · Blu Navy', burg:'Solo Logo · Bordeaux', olive:'Solo Logo · Oliva' },
+};
+
+function switchColor(product, color, swatchEl) {
+  // Hide all variants
+  document.querySelectorAll(`[id^="sw-${product}-"]`).forEach(el => el.style.display='none');
+  const target = document.getElementById(`sw-${product}-${color}`);
+  if(target) {
+    target.style.display='block';
+    if(swipers.has(target)) swipers.get(target).reset();
+  }
+  // Update ref
+  const ref = document.getElementById(`ref-${product}`);
+  if(ref && colorRefs[product]) ref.textContent = colorRefs[product][color] || '';
+  // Update swatches
+  if(swatchEl) {
+    swatchEl.closest('.p-swatches').querySelectorAll('.swatch').forEach(s => s.classList.remove('sel'));
+    swatchEl.classList.add('sel');
+  }
+}
+
+// Evidenziazione voci menu solo per link interni (#sezione), non per Home/Merchandising/Instagram
+const secs = document.querySelectorAll('.sec-anchor');
+const anchorLinks = document.querySelectorAll('.h-nav a[href^="#"]');
+const io2 = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      anchorLinks.forEach(l => l.classList.remove('active'));
+      const m = document.querySelector(`.h-nav a[href="#${e.target.id}"]`);
+      if(m) m.classList.add('active');
+    }
+  });
+}, {threshold:.25});
+secs.forEach(s => io2.observe(s));
+
+function closeSG(e) {
+  if (e.target === document.getElementById('sgOverlay')) {
+    document.getElementById('sgOverlay').classList.remove('open');
+  }
+}
+
+</script>
+
+<!-- SIZE GUIDE MODAL -->
+<div class="sg-overlay" id="sgOverlay" onclick="closeSG(event)">
+  <div class="sg-sheet" id="sgSheet">
+    <div class="sg-header">
+      <span class="sg-title">Guida alle Taglie</span>
+      <button class="sg-close" onclick="document.getElementById('sgOverlay').classList.remove('open')">✕</button>
+    </div>
+    <div class="sg-body">
+
+      <p class="sg-how">Misura la larghezza del petto a riposo e confronta con la tabella. In caso di dubbio, scegli la taglia più grande.</p>
+
+      <p class="sg-section-title">T-Shirt — Misure corpo (cm)</p>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Taglia</th>
+            <th>Petto</th>
+            <th>Vita</th>
+            <th>Lunghezza</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>XS</td><td>84–88</td><td>70–74</td><td>68</td></tr>
+          <tr><td>S</td><td>88–92</td><td>74–78</td><td>70</td></tr>
+          <tr><td>M</td><td>92–96</td><td>78–82</td><td>72</td></tr>
+          <tr><td>L</td><td>96–100</td><td>82–86</td><td>74</td></tr>
+          <tr><td>XL</td><td>100–104</td><td>86–90</td><td>76</td></tr>
+          <tr><td>XXL</td><td>104–110</td><td>90–96</td><td>78</td></tr>
+        </tbody>
+      </table>
+
+      <p class="sg-section-title">T-Shirt — Misure capo (cm)</p>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Taglia</th>
+            <th>Larghezza</th>
+            <th>Lunghezza</th>
+            <th>Manica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>XS</td><td>46</td><td>68</td><td>19</td></tr>
+          <tr><td>S</td><td>49</td><td>70</td><td>20</td></tr>
+          <tr><td>M</td><td>52</td><td>72</td><td>21</td></tr>
+          <tr><td>L</td><td>55</td><td>74</td><td>22</td></tr>
+          <tr><td>XL</td><td>58</td><td>76</td><td>23</td></tr>
+          <tr><td>XXL</td><td>62</td><td>78</td><td>24</td></tr>
+        </tbody>
+      </table>
+
+      <p class="sg-section-title">Accessori</p>
+      <div class="sg-acc-grid">
+        <div class="sg-acc-card">
+          <div class="sg-acc-card-title">Tote Bag</div>
+          <p>38 × 42 cm<br>Manico 28 cm<br>Tela di cotone 240g<br>Taglia unica</p>
+        </div>
+        <div class="sg-acc-card">
+          <div class="sg-acc-card-title">Berretto</div>
+          <p>Taglia unica<br>Regolabile<br>Circumferenza 56–60 cm<br>Coming soon</p>
+        </div>
+      </div>
+
+      <p class="sg-footer-note">Per qualsiasi dubbio sulla taglia, scrivici su Instagram — ti aiutiamo a scegliere quella giusta.</p>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
