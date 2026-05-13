@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Iniziative — Sugnu Rausana</title>
+<title>Chi siamo — Sugnu Rausana</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@ body{
 }
 @keyframes marquee{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
 
-/* Header (allineato alla home) */
+/* Header */
 header{
   position:sticky;top:0;z-index:300;
   background:var(--bg);border-bottom:1px solid var(--border);
@@ -61,10 +61,10 @@ header{
 }
 .h-cta:hover{color:var(--dark);border-bottom-color:var(--dark)}
 
-/* Hero compatto pagina interna */
+/* Hero compatto (stesso pattern di iniziative.html) */
 .iniz-hero{position:relative;min-height:52vh;max-height:520px;overflow:hidden;background:var(--dark)}
 .iniz-hero-img{
-  width:100%;height:100%;min-height:52vh;object-fit:cover;object-position:center 22%;
+  width:100%;height:100%;min-height:52vh;object-fit:cover;object-position:center 20%;
   opacity:.76;display:block;animation:heroIn 1.2s ease both;
 }
 @keyframes heroIn{from{opacity:0;transform:scale(1.04)}to{opacity:.76;transform:scale(1)}}
@@ -81,13 +81,13 @@ header{
 .iniz-hero-h1 em{color:var(--gold);font-style:normal}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-/* Corpo pagina */
 .iniz-main{padding:40px 24px 48px}
 .iniz-lead{
   font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;line-height:1.55;color:var(--mid);
   margin-bottom:28px;max-width:36ch;
 }
-/* Box claim siciliano + traduzione */
+
+/* Box Uocciu vivo (coerente con iniziative.html) */
 .uocciu-box{
   background:linear-gradient(145deg, var(--sand) 0%, var(--off) 100%);
   border:1px solid var(--border);
@@ -108,21 +108,74 @@ header{
 .uocciu-sub{
   font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--mid);line-height:1.45;
 }
+
+/* Blocchi sezione */
+.page-block{
+  margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--border);
+}
+.page-block:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.page-h2{
+  font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:.95;letter-spacing:.02em;
+  color:var(--dark);margin-bottom:12px;
+}
+.page-eyebrow{
+  font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:var(--burg);margin-bottom:10px;
+}
 .iniz-body{
   font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;line-height:1.58;color:var(--mid);
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
-.iniz-cta-row{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.info-list{
+  list-style:none;font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;
+  color:var(--mid);line-height:1.65;margin:12px 0 0;padding:0;
+}
+.info-list li{
+  position:relative;padding-left:1.1em;margin-bottom:10px;
+}
+.info-list li::before{
+  content:'·';position:absolute;left:0;color:var(--burg);font-style:normal;font-weight:700;
+}
+
+/* Due card placeholder soci */
+.soft-cards{
+  display:grid;gap:12px;margin-top:16px;
+}
+.soft-card{
+  background:var(--off);border:1px solid var(--border);
+  padding:18px 16px;
+}
+.soft-card h3{
+  font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.04em;color:var(--dark);margin-bottom:8px;
+}
+.soft-card p{
+  font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--mid);line-height:1.5;
+}
+
+/* Statuto: pulsante disabilitato finché non c'è PDF reale */
+.statuto-wrap{margin-top:14px}
+.btn-statuto[disabled],.btn-statuto:disabled{
+  opacity:.42;cursor:not-allowed;pointer-events:none;
+  border-color:rgba(122,30,46,.35);background:rgba(122,30,46,.12);color:var(--mid);
+}
+.statuto-nota{
+  font-size:9px;letter-spacing:.08em;color:var(--mid);margin-top:12px;line-height:1.5;max-width:34ch;
+}
+
 .btn{
   display:inline-flex;align-items:center;justify-content:center;text-align:center;
   text-decoration:none;font-size:9px;letter-spacing:.2em;text-transform:uppercase;
   padding:14px 18px;border-radius:0;font-family:'DM Mono',monospace;font-weight:500;
+  border:1px solid transparent;
   transition:background .2s,color .2s,border-color .2s;
 }
-.btn-primary{background:var(--burg);color:var(--cream);border:1px solid var(--burg)}
-.btn-primary:hover{background:var(--dark);border-color:var(--dark);color:var(--cream)}
+button.btn{cursor:pointer;font-family:'DM Mono',monospace}
+.info-list strong{font-style:normal;font-weight:600;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em}
+.btn-primary{background:var(--burg);color:var(--cream);border-color:var(--burg)}
+.btn-primary:hover:not(:disabled){background:var(--dark);border-color:var(--dark);color:var(--cream)}
 .btn-ghost{background:transparent;color:var(--dark);border:1px solid var(--border)}
 .btn-ghost:hover{border-color:var(--dark);color:var(--dark)}
+
+.iniz-cta-row{display:flex;flex-direction:column;gap:10px;margin-top:28px}
 
 .site-footer{
   background:var(--dark);color:rgba(250,246,238,.55);
@@ -148,20 +201,21 @@ header{
   .iniz-main{max-width:min(640px,92vw);margin:0 auto;padding:56px clamp(44px,8vw,80px) 64px}
   .iniz-cta-row{flex-direction:row;flex-wrap:wrap}
   .btn{min-width:200px}
+  .soft-cards{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 
 <!-- Striscia -->
-<div class="topbar"><span class="topbar-inner">Iniziative in costruzione · Uocciu vivo · Associazione culturale · Ragusa · Sicilia &nbsp;·&nbsp; Seguici su Instagram</span></div>
+<div class="topbar"><span class="topbar-inner">Chi siamo · Uocciu vivo · Statuto in pubblicazione · Soci e organizzazione in aggiornamento &nbsp;·&nbsp; Associazione culturale · Ragusa</span></div>
 
-<!-- Navigazione: stesso ordine delle altre pagine del sito -->
+<!-- Navigazione: ordine fisso sito -->
 <header>
   <nav class="h-nav" aria-label="Navigazione principale">
     <a href="index.html">Home</a>
-    <a href="chi-siamo.html">Chi siamo</a>
-    <a href="iniziative.html" class="active" aria-current="page">Iniziative</a>
+    <a href="chi-siamo.html" class="active" aria-current="page">Chi siamo</a>
+    <a href="iniziative.html">Iniziative</a>
     <a href="merchandising.html">Merchandising</a>
     <a href="https://ig.me/m/sugnu_rausana" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a>
   </nav>
@@ -169,37 +223,95 @@ header{
   <div class="h-right"><a class="h-cta" href="https://ig.me/m/sugnu_rausana" target="_blank" rel="noopener noreferrer">Info in chat</a></div>
 </header>
 
-<!-- Hero pagina -->
-<section class="iniz-hero" aria-labelledby="iniz-hero-title">
+<!-- Hero -->
+<section class="iniz-hero" aria-labelledby="cs-hero-title">
   <img class="iniz-hero-img" src="assets/index/img-002.jpg" alt="">
   <div class="iniz-hero-grad"></div>
   <div class="iniz-hero-copy">
     <p class="iniz-hero-eyebrow">Sugnu Rausana</p>
-    <h1 class="iniz-hero-h1" id="iniz-hero-title">INIZIATIVE</h1>
+    <h1 class="iniz-hero-h1" id="cs-hero-title">CHI <em>SIAMO</em></h1>
   </div>
 </section>
 
 <main class="iniz-main" id="contenuto-principale">
   <p class="iniz-lead">
-    Progetti culturali, incontri e collaborazioni che stiamo costruendo con calma, nel rispetto del territorio e delle persone che ci stanno intorno.
+    Informazioni istituzionali, statuto e organizzazione: qui raccogliamo tutto ciò che serve a conoscerci meglio, con la stessa cura con cui costruiamo il resto del progetto.
   </p>
 
-  <!-- Claim siciliano + traduzione (stay tuned) -->
+  <!-- Tono "Uocciu vivo": pagina che respira con noi, non statica -->
   <aside class="uocciu-box" aria-labelledby="uocciu-title">
     <p class="uocciu-eyebrow">Dalla nostra voce</p>
     <p class="uocciu-title" id="uocciu-title">Uocciu vivo</p>
-    <p class="uocciu-sub">Resta connesso: c’è altro in arrivo — seguici per primi sui prossimi passi.</p>
+    <p class="uocciu-sub">Resta connesso: stiamo completando documenti e schede — c’è altro in arrivo, seguici anche su Instagram.</p>
   </aside>
 
-  <p class="iniz-body">
-    Stiamo definendo calendario, spazi e partner. Quando ogni iniziativa avrà forma pubblica, la racconteremo qui e sui nostri canali. Intanto grazie a chi ci sostiene anche attraverso il merchandising.
-  </p>
-  <p class="iniz-body">
-    Per restare aggiornato in tempo reale, passa da Instagram: è lì che annunciamo novità, retroscena e aperture.
-  </p>
+  <!-- Associazione -->
+  <section class="page-block" aria-labelledby="blocco-assoc">
+    <p class="page-eyebrow" id="blocco-assoc">Identità</p>
+    <h2 class="page-h2">L’associazione</h2>
+    <p class="iniz-body">
+      Sugnu Rausana è un’associazione culturale con radici a Ragusa e uno sguardo rivolto al contemporaneo. Ci muoviamo tra progetti, incontri e un linguaggio visivo che racconta il territorio senza appiattirlo.
+    </p>
+    <p class="iniz-body">
+      Questa pagina si arricchirà con dati ufficiali (sede, CF/P.IVA, recapiti istituzionali) non appena verificati e pubblicati: preferiamo pochi dati certi a molte righe provvisorie.
+    </p>
+  </section>
 
+  <!-- Statuto: download solo quando esisterà il PDF in repo -->
+  <section class="page-block" aria-labelledby="blocco-statuto">
+    <p class="page-eyebrow" id="blocco-statuto">Trasparenza</p>
+    <h2 class="page-h2">Statuto</h2>
+    <p class="iniz-body">
+      Lo statuto sociale sarà disponibile in PDF per consultazione e download. Il testo è in revisione / impaginazione per il web: appena pronto lo collegheremo da qui.
+    </p>
+    <div class="statuto-wrap">
+      <button type="button" class="btn btn-primary btn-statuto" disabled aria-describedby="statuto-nota">Scarica lo statuto (PDF)</button>
+      <p id="statuto-nota" class="statuto-nota">Documento in pubblicazione: il pulsante si attiverà quando il file sarà online.</p>
+    </div>
+  </section>
+
+  <!-- Soci -->
+  <section class="page-block" aria-labelledby="blocco-soci">
+    <p class="page-eyebrow" id="blocco-soci">Community</p>
+    <h2 class="page-h2">Soci e partecipazione</h2>
+    <p class="iniz-body">
+      L’associazione vive delle persone che scelgono di camminare con noi. Dettagli su quote, modalità di ammissione e assemblee saranno qui riassunti in linguaggio semplice.
+    </p>
+    <ul class="info-list">
+      <li>Come diventare socio: <strong>da definire</strong> — indicazioni in aggiornamento.</li>
+      <li>Assemblee e convocazioni: <strong>in aggiornamento</strong>.</li>
+      <li>Quote e versamenti: <strong>in aggiornamento</strong> (nessun importo pubblicato finché non è deliberato).</li>
+    </ul>
+    <div class="soft-cards">
+      <div class="soft-card">
+        <h3>Vuoi entrare?</h3>
+        <p>Scrivici in chat su Instagram: ti indirizziamo al canale giusto quando la procedura sarà aperta.</p>
+      </div>
+      <div class="soft-card">
+        <h3>Già socio</h3>
+        <p>Comunicazioni riservate e circolari: canale e tempistiche <strong>in definizione</strong> su questa pagina.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organizzazione -->
+  <section class="page-block" aria-labelledby="blocco-org">
+    <p class="page-eyebrow" id="blocco-org">Struttura</p>
+    <h2 class="page-h2">Organizzazione</h2>
+    <p class="iniz-body">
+      Organi sociali, cariche e mandati saranno elencati qui in forma chiara (nome ruolo, competenze, contatto istituzionale se previsto), nel rispetto della privacy.
+    </p>
+    <ul class="info-list">
+      <li>Consiglio direttivo / organo amministrativo: <strong>in definizione</strong>.</li>
+      <li>Presidente / referenti: <strong>in definizione</strong>.</li>
+      <li>Deleghe e gruppi di lavoro: <strong>in aggiornamento</strong>.</li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
   <div class="iniz-cta-row">
     <a class="btn btn-primary" href="https://ig.me/m/sugnu_rausana" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+    <a class="btn btn-ghost" href="iniziative.html">Iniziative</a>
     <a class="btn btn-ghost" href="merchandising.html">Merchandising</a>
   </div>
 </main>
